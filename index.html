@@ -23,32 +23,86 @@
 		<script src="script.js"></script>
 		<link rel="stylesheet" href="styles.css" />
 		<script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/attributify.global.js"></script>
+		<script
+			type="module"
+			src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+		></script>
+		<script
+			nomodule
+			src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+		></script>
 	</head>
 	<body class="font-libre-franklin" un-cloak>
-		<section
-			class="flex flex-col justify-center items-center py-21.5 text-center"
-		>
-			<img src="images/logo.svg" alt="" />
-			<h1 class="mt-10 text-12 tracking-0.04">
-				We are launching <span class="font-700">soon!</span>
-			</h1>
-			<p class="mt-2.25 text-5">Subscribe and get notified</p>
-			<div class="mt-9 flex gap-4 items-self-center">
-				<input
-					type="text"
-					name=""
-					id=""
-					placeholder="Your email address..."
-					class="max-w-105 px-7 border-1 border-black rounded-full"
-				/>
-				<button
-					class="px-16 py-4 bg-primary-blue text-white rounded-full"
+		<section class="flex justify-center" x-data="comingSoon">
+			<div
+				class="flex flex-col items-center py-21 px-12 max-w-183 text-center text-neutral-blue"
+				md="py-21.5"
+			>
+				<img src="images/logo.svg" alt="" class="h-4" md="h-6.5" />
+				<h1
+					class="mt-8.75 text-5.5 text-neutral-gray"
+					md="mt-10 text-12.25 -tracking-0.1"
 				>
-					Notify Me
-				</button>
+					We are launching
+					<span class="font-700 text-neutral-blue">soon!</span>
+				</h1>
+				<p class="mt-3.5 text-3" md="mt-1.5 text-5">
+					Subscribe and get notified
+				</p>
+				<div
+					class="relative mt-7.75 flex flex-col gap-2.5 w-full"
+					md="mt-9.25 flex-row gap-3.5"
+				>
+					<input
+						type="text"
+						name=""
+						id=""
+						placeholder="Your email address..."
+						class="text-3 px-7.75 py-2.5 border-1 border-secondary-blue rounded-full"
+						md="py-3.75 text-4 flex-1"
+						x-model="email"
+						:class="(isChecking && !isValidEmail()) && 'border-secondary-red'"
+					/>
+					<button
+						class="text-3 px-16 py-2.75 bg-primary-blue text-white rounded-full shadow-lg shadow-secondary-blue transition-all"
+						md="py-3.75 text-4"
+						hover="opacity-80"
+						active="opacity-60"
+						@click="useSubmit"
+					>
+						Notify Me
+					</button>
+					<p
+						class="absolute text-3 tracking-0.05 italic text-secondary-red -bottom-6.25 left-7.25"
+						x-show="isChecking && !isValidEmail()"
+					>
+						Please provide a valid email address
+					</p>
+				</div>
+				<img
+					src="images/illustration-dashboard.png"
+					alt=""
+					class="mt-17.5"
+					md="mt-22"
+				/>
+				<div class="mt-36 flex gap-2" md="mt-18">
+					<ion-icon
+						name="logo-facebook"
+						class="social-media"
+					></ion-icon>
+					<ion-icon
+						name="logo-twitter"
+						class="social-media"
+					></ion-icon>
+					<ion-icon
+						name="logo-instagram"
+						class="social-media"
+					></ion-icon>
+				</div>
+				<p class="mt-5.5 text-2.5 text-neutral-gray" md="text-3">
+					&copy; Copyright Ping. All rights reserved.
+				</p>
 			</div>
-			<img src="images/illustration-dashboard.png" alt="" class="mt-20" />
-			<p>&copy; Copyright Ping. All rights reserved.</p>
 		</section>
 	</body>
 </html>

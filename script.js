@@ -12,5 +12,29 @@ window.__unocss = {
 			"libre-franklin": "'Libre Franklin', sans-serif",
 		},
 	},
-	shortcuts: {},
+	shortcuts: {
+		"social-media":
+			"p-2 text-primary-blue border-1 border-solid border-secondary-blue rounded-full cursor-pointer transition-all hover:bg-primary-blue hover:border-primary-blue hover:text-white",
+	},
 }
+
+//ALPINE
+document.addEventListener("alpine:init", () => {
+	Alpine.data("comingSoon", () => ({
+		email: "",
+		isChecking: false,
+		isValidEmail() {
+			var regexMail = /\S+@\S+\.\S+/
+			return regexMail.test(this.email)
+		},
+		useSubmit() {
+			if (this.isValidEmail()) {
+				//RESET STATE
+				this.email = ""
+				this.isChecking = false
+			} else {
+				this.isChecking = true
+			}
+		},
+	}))
+})
